@@ -1,0 +1,60 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+    margin:0 auto;
+    padding:0 30px;
+    border:1px solid red;
+}
+
+/* Header Layout */
+header.container {
+    margin-top:30px;
+}
+#navSmiley, #navLogo {
+    display:inline-block;
+    vertical-align: top;
+    height:80px;
+    border:2px solid black;
+    text-align:center;
+}
+#navSmiley {
+    width:25%;
+    border-right:none;
+}
+#navLogo {
+    width:75%;
+}
+    img[src="img/ngMadLibsSmiley.png"], img[src="img/ngMadLibsLogo.png"] {
+        margin-top:6px;
+    }
+    img[src="img/ngMadLibsSmiley.png"] {
+        height:64px;
+    }
+    img[src="img/ngMadLibsLogo.png"] {
+        height:40%;
+    }
+
+/* MadLibs Keywords Layout */
+#madlibskeywords form {
+    border:2px solid black;
+    padding:1em;
+}
+
+/* MadLibs Text Layout */
+#madlibstext .content {
+    border:2px solid black;
+    border-bottom:0;
+    padding:1em;
+    padding-bottom:0;
+}
+#madlibstext .content:last-child {
+    border-top:0;
+    border-bottom:2px solid black;
+    padding-bottom:1em;
+}

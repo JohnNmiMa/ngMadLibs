@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="madLibsApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ngMadLibs</title>
+    <link type="text/css" rel="stylesheet" href="./reset.css">
+    <link type="text/css" rel="stylesheet" href="./main.css">
+    <script src="./angular.min.js" type="text/javascript"></script>
+    <script src="./madLibsApp.js" type="text/javascript"></script>
+</head>
+<body ng-controller="madLibsController">
+    <header class="container">
+        <div id="navSmiley">
+            <img src="img/ngMadLibsSmiley.png">
+        </div><!--
+        --><div id="navLogo">
+            <img src="img/ngMadLibsLogo.png">
+            <h1>Automate This!</h1>
+        </div>
+    </header>
+    <section id="madlibskeywords" class="container">
+        <form>
+            <input type="text" ng-repeat="keyword in keywords" placeholder={{keyword.type}}>
+        </form>
+    </section>
+    <section id="madlibstext" class="container">
+        <!--<p class="content">{{female name}} was a {{job title}} who loved technology. Although she loved parts of her job, she absolutely hated {{tedious task}} and {{dirty task}}. So, {{female_name}} met with her life mentor {{celebrity}} who told her to learn how to {{useless skill}} with Thinkful. Thinkful didn't offer a course on {{useless skill}} so she studied programming instead.</p>-->
+ 
+        <!--<p class="content">What a great decision! With her new skills, {{female name}} built a(n) {{adjective}} robot named {{obnoxiuous celbertity}} that not only loved {{dirty task}} but did it {{huge number}} faster.</p>-->
+    </section>
+</body>
+</html>
+
