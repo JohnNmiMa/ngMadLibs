@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="madLibsApp">
+<html lang="en" ng-app="ngMadLibsApp">
 <head>
 	<meta charset="UTF-8">
 	<title>ngMadLibs</title>
@@ -13,20 +13,35 @@
         <div id="navSmiley">
             <img src="img/ngMadLibsSmiley.png">
         </div><!--
-        --><div id="navLogo">
+     --><div id="navLogo">
             <img src="img/ngMadLibsLogo.png">
             <h1>Automate This!</h1>
         </div>
     </header>
     <section id="madlibskeywords" class="container">
         <form>
-            <input type="text" ng-repeat="keyword in keywords" placeholder={{keyword.type}}>
+            <input type="text" ng-repeat="keyword in keywords" placeholder={{keyword.type}} ng-model="keyword.value">
         </form>
     </section>
     <section id="madlibstext" class="container">
-        <!--<p class="content">{{female name}} was a {{job title}} who loved technology. Although she loved parts of her job, she absolutely hated {{tedious task}} and {{dirty task}}. So, {{female_name}} met with her life mentor {{celebrity}} who told her to learn how to {{useless skill}} with Thinkful. Thinkful didn't offer a course on {{useless skill}} so she studied programming instead.</p>-->
+        <p class="content">
+         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} was a
+         {{keywords[1].value || "\{\{"+keywords[1].type+"\}\}"}} who loved technology.
+         Although she loved parts of her job, she absolutely hated 
+         {{keywords[2].value || "\{\{"+keywords[2].type+"\}\}"}} and 
+         {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}}.  So,
+         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} met with her life mentor 
+         {{keywords[4].value || "\{\{"+keywords[4].type+"\}\}"}} who told her to learn how to 
+         {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} with Thinkful.
+         Thinkful didn't offer a course on 
+         {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} so she studied programming instead.</p>
  
-        <!--<p class="content">What a great decision! With her new skills, {{female name}} built a(n) {{adjective}} robot named {{obnoxiuous celbertity}} that not only loved {{dirty task}} but did it {{huge number}} faster.</p>-->
+        <p class="content">What a great decision! With her new skills, 
+         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} built a(n) 
+         {{keywords[6].value || "\{\{"+keywords[6].type+"\}\}"}} robot named
+         {{keywords[7].value || "\{\{"+keywords[7].type+"\}\}"}} that not only loved
+         {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}} but did it
+         {{keywords[8].value || "\{\{"+keywords[8].type+"\}\}"}} times faster.</p>
     </section>
 </body>
 </html>

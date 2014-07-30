@@ -1,32 +1,41 @@
-angular.module('madLibsApp', []).
+angular.module('ngMadLibsApp', []).
 controller('madLibsController', function($scope) {
     $scope.keywords = [
-        {type: 'female name',
-        value: ''
+        {id: 0,
+         type: 'Female Name',
+         value: ''
         },
-        {type: 'job title',
-        value: ''
+        {id: 1,
+         type: 'Job Title',
+         value: ''
         },
-        {type: 'tedious task',
-        value: ''
+        {id: 2,
+         type: 'Tedious Task',
+         value: ''
         },
-        {type: 'dirty task',
-        value: ''
+        {id: 3,
+         type: 'Dirty Task',
+         value: ''
         },
-        {type: 'celebrity',
-        value: ''
+        {id: 4,
+         type: 'Celebrity',
+         value: ''
         },
-        {type: 'useless skill',
-        value: ''
+        {id: 5,
+         type: 'Useless Skill',
+         value: ''
         },
-        {type: 'adjective',
-        value: ''
+        {id: 6,
+         type: 'Adjective',
+         value: ''
         },
-        {type: 'obnoxiuous celebrity',
-        value: ''
+        {id: 7,
+         type: 'Obnoxiuous Celebrity',
+         value: ''
         },
-        {type: 'huge number',
-        value: ''
+        {id: 8,
+         type: 'Huge Number',
+         value: ''
         }
     ];
 });
