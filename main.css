@@ -5,11 +5,13 @@
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
 .container {
     margin:0 auto;
     padding:0 30px;
-    border:1px solid red;
+    /*border:1px solid red;*/
 }
 
 /* Header Layout */
@@ -21,6 +23,7 @@ header.container {
     vertical-align: top;
     height:80px;
     border:2px solid black;
+    border-bottom:none;
     text-align:center;
 }
 #navSmiley {
