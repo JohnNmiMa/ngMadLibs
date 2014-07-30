@@ -46,6 +46,7 @@ header.container {
 /* MadLibs Keywords Layout */
 #madlibskeywords form {
     border:2px solid black;
+    border-bottom:0;
     padding:1em;
     text-align:center;
 }
