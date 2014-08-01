@@ -21,27 +21,39 @@
     <section id="madlibskeywords" class="container">
         <form>
             <input type="text" ng-repeat="keyword in keywords" placeholder={{keyword.type}} ng-model="keyword.value">
+            <div>
+                <label for="genderToggle">Gender toggle:</label>
+                <button id="genderToggle" ng-click="toggleGender()">{{gender}}</button>
+            </div>
         </form>
     </section>
     <section id="madlibstext" class="container">
         <p class="content">
-         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} was a
+         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} was a(n)
          {{keywords[1].value || "\{\{"+keywords[1].type+"\}\}"}} who loved technology.
-         Although she loved parts of her job, she absolutely hated 
+         Although 
+             {{(gender=='female')?'she':'he'}} loved parts of
+             {{(gender=='female')?'her':'his'}} job,
+             {{(gender=='female')?'she':'he'}} absolutely hated 
          {{keywords[2].value || "\{\{"+keywords[2].type+"\}\}"}} and 
          {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}}.  So,
-         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} met with her life mentor 
-         {{keywords[4].value || "\{\{"+keywords[4].type+"\}\}"}} who told her to learn how to 
+         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} met with 
+             {{(gender=='female')?'her':'his'}} life mentor 
+         {{keywords[4].value || "\{\{"+keywords[4].type+"\}\}"}} who told
+             {{(gender=='female')?'her':'him'}} to learn how to 
          {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} with Thinkful.
          Thinkful didn't offer a course on 
-         {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} so she studied programming instead.</p>
+         {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} so
+             {{(gender=='female')?'she':'he'}} studied programming instead.</p>
  
-        <p class="content">What a great decision! With her new skills, 
-         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} built a(n) 
-         {{keywords[6].value || "\{\{"+keywords[6].type+"\}\}"}} robot named
-         {{keywords[7].value || "\{\{"+keywords[7].type+"\}\}"}} that not only loved
-         {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}} but did it
-         {{keywords[8].value || "\{\{"+keywords[8].type+"\}\}"}} times faster.</p>
+         <p class="content">
+          What a great decision! With
+              {{(gender=='female')?'her':'his'}} new skills, 
+          {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} built a(n) 
+          {{keywords[6].value || "\{\{"+keywords[6].type+"\}\}"}} robot named
+          {{keywords[7].value || "\{\{"+keywords[7].type+"\}\}"}} that not only loved
+          {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}} but did it
+          {{keywords[8].value || "\{\{"+keywords[8].type+"\}\}"}} times faster.</p>
     </section>
 </body>
 </html>

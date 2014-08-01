@@ -1,41 +1,29 @@
-angular.module('ngMadLibsApp', []).
-controller('madLibsController', function($scope) {
+angular.module('ngMadLibsApp', [])
+.controller('madLibsController', function($scope) {
+    $scope.gender = 'female';
     $scope.keywords = [
-        {id: 0,
-         type: 'Female Name',
-         value: ''
-        },
-        {id: 1,
-         type: 'Job Title',
-         value: ''
-        },
-        {id: 2,
-         type: 'Tedious Task',
-         value: ''
-        },
-        {id: 3,
-         type: 'Dirty Task',
-         value: ''
-        },
-        {id: 4,
-         type: 'Celebrity',
-         value: ''
-        },
-        {id: 5,
-         type: 'Useless Skill',
-         value: ''
-        },
-        {id: 6,
-         type: 'Adjective',
-         value: ''
-        },
-        {id: 7,
-         type: 'Obnoxiuous Celebrity',
-         value: ''
-        },
-        {id: 8,
-         type: 'Huge Number',
-         value: ''
-        }
+        {type: $scope.gender == 'female' ? 'Female Name' : 'Male Name',
+         value: '' },
+        {type: 'Job Title',
+         value: '' },
+        {type: 'Tedious Task',
+         value: '' },
+        {type: 'Dirty Task',
+         value: '' },
+        {type: 'Celebrity',
+         value: '' },
+        {type: 'Useless Skill',
+         value: '' },
+        {type: 'Adjective',
+         value: '' },
+        {type: 'Obnoxiuous Celebrity',
+         value: '' },
+        {type: 'Huge Number',
+         value: '' }
     ];
+
+    $scope.toggleGender = function() {
+        $scope.gender = ($scope.gender == 'female') ? 'male' : 'female';
+        $scope.keywords[0].type = ($scope.gender == 'female') ? 'Female Name' : 'Male Name';
+    };
 });
