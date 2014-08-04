@@ -2,28 +2,81 @@ angular.module('ngMadLibsApp', [])
 .controller('madLibsController', function($scope) {
     $scope.gender = 'female';
     $scope.keywords = [
-        {type: $scope.gender == 'female' ? 'Female Name' : 'Male Name',
+        {ph: $scope.gender == 'female' ? 'Female Name' : 'Male Name',
+         type:'text',
+         name:'gender_name',
          value: '' },
-        {type: 'Job Title',
+        {ph: 'Job Title',
+         type:'text',
+         name:'job_title',
          value: '' },
-        {type: 'Tedious Task',
+        {ph: 'Tedious Task',
+         type:'text',
+         name:'tedious_task',
          value: '' },
-        {type: 'Dirty Task',
+        {ph: 'Dirty Task',
+         type:'text',
+         name:'dirty_task',
          value: '' },
-        {type: 'Celebrity',
+        {ph: 'Celebrity',
+         type:'text',
+         name:'celebrity',
          value: '' },
-        {type: 'Useless Skill',
+        {ph: 'Useless Skill',
+         type:'text',
+         name:'useless_skill',
          value: '' },
-        {type: 'Adjective',
+        {ph: 'Adjective',
+         type:'text',
+         name:'adjective',
          value: '' },
-        {type: 'Obnoxiuous Celebrity',
+        {ph: 'Obnoxiuous Celebrity',
+         type:'text',
+         name:'obnoxiuous_celebrity',
          value: '' },
-        {type: 'Huge Number',
+        {ph: 'Huge Number',
+         type:'number',
+         name:'huge_number',
          value: '' }
     ];
 
     $scope.toggleGender = function() {
         $scope.gender = ($scope.gender == 'female') ? 'male' : 'female';
-        $scope.keywords[0].type = ($scope.gender == 'female') ? 'Female Name' : 'Male Name';
+        $scope.keywords[0].ph = ($scope.gender == 'female') ? 'Female Name' : 'Male Name';
     };
+
+    $scope.showText = false;
+    $scope.$on('showText', function(event, data) {
+        $scope.showText = true;
+    });
+    $scope.showKeywordsView = function() {
+        var keyword;
+        for (keyword in $scope.keywords) {
+            $scope.keywords[keyword]['value'] = '';
+        }
+        $scope.$broadcast('resetForm', true);
+        $scope.showText = false;
+        //$scope.submitted = false;
+    }
+})
+.controller('FormCtrl', function($scope) {
+    $scope.submitted = false;
+    $scope.submit = function() {
+        if($scope.keywordForm.$valid) {
+            $scope.$emit('showText', true);
+        } else {
+            if ($scope.keywordForm.$error.required) {
+                console.log('The Form is not completely filled in');
+            }
+            if ($scope.keywordForm.$error.number) {
+                console.log('The Form element "Huge Number" is not a number');
+                $scope.keywords[8]['value'] = '';
+            }
+        }
+        $scope.submitted = true;
+    }
+    $scope.$on('resetForm', function(event, data) {
+        $scope.keywordForm.$setPristine();
+        $scope.submitted = false;
+    });
 });

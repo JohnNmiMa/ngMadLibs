@@ -9,26 +9,25 @@ body {
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 .container {
-    margin:0 auto;
-    padding:0 30px;
-    /*border:1px solid red;*/
+    position:relative;
+    margin:0 30px;
+    border:2px solid black;
 }
 
 /* Header Layout */
 header.container {
     margin-top:30px;
+    border-bottom:none;
 }
 #navSmiley, #navLogo {
     display:inline-block;
     vertical-align: top;
     height:80px;
-    border:2px solid black;
-    border-bottom:none;
     text-align:center;
 }
 #navSmiley {
     width:25%;
-    border-right:none;
+    border-right:2px solid black;
 }
 #navLogo {
     width:75%;
@@ -45,21 +44,40 @@ header.container {
 
 /* MadLibs Keywords Layout */
 #madlibskeywords form {
-    border:2px solid black;
-    border-bottom:0;
     padding:1em;
     text-align:center;
+}
+#madlibskeywords form input {
+    border:1px inset;
+    border-radius:3px;
+    padding:3px;
+    margin:5px;
+}
+#madlibskeywords form input.hasError::-webkit-input-placeholder {
+   color: red;
+}
+.divider {
+    border-top:2px solid black;
+    margin:1em 0 2em 0;
+}
+#showTextBtn {
+    position:absolute;
+    margin:16px;
+    right:0;
+    bottom:0;
 }
 
 /* MadLibs Text Layout */
 #madlibstext .content {
-    border:2px solid black;
-    border-bottom:0;
     padding:1em;
     padding-bottom:0;
 }
-#madlibstext .content:last-child {
-    border-top:0;
-    border-bottom:2px solid black;
-    padding-bottom:1em;
+#madlibstext .content.last {
+    padding-bottom:3em;
+}
+#startOverBtn {
+    position:absolute;
+    margin:16px;
+    right:0;
+    bottom:0;
 }

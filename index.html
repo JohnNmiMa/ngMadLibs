@@ -18,43 +18,53 @@
             <h1>Automate This!</h1>
         </div>
     </header>
-    <section id="madlibskeywords" class="container">
-        <form>
-            <input type="text" ng-repeat="keyword in keywords" placeholder={{keyword.type}} ng-model="keyword.value">
+    <section id="madlibskeywords" class="container" ng-show="showText == false">
+        <form ng-controller="FormCtrl" ng-submit="submit()" name="keywordForm" novalidate>
+            <input
+             ng-repeat="keyword in keywords"
+             type={{keyword.type}}
+             name={{keyword.name}}
+             placeholder={{keyword.ph}}
+             ng-model="keyword.value"
+             ng-class="{hasError: submitted && keywordForm.$invalid}"
+             required>
             <div>
-                <label for="genderToggle">Gender toggle:</label>
-                <button id="genderToggle" ng-click="toggleGender()">{{gender}}</button>
+                <label for="genderToggleBtn">Gender toggle:</label>
+                <button id="genderToggleBtn" type="button" ng-click="toggleGender()">{{gender}}</button>
             </div>
+            <div class="divider"></div>
+            <button id="showTextBtn" type="submit">Generate My Mad Lib</button>
         </form>
     </section>
-    <section id="madlibstext" class="container">
+    <section id="madlibstext" class="container" ng-show="showText == true">
         <p class="content">
-         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} was a(n)
-         {{keywords[1].value || "\{\{"+keywords[1].type+"\}\}"}} who loved technology.
+         {{keywords[0].value || "\{\{"+keywords[0].ph+"\}\}"}} was a(n)
+         {{keywords[1].value || "\{\{"+keywords[1].ph+"\}\}"}} who loved technology.
          Although 
              {{(gender=='female')?'she':'he'}} loved parts of
              {{(gender=='female')?'her':'his'}} job,
              {{(gender=='female')?'she':'he'}} absolutely hated 
-         {{keywords[2].value || "\{\{"+keywords[2].type+"\}\}"}} and 
-         {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}}.  So,
-         {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} met with 
+         {{keywords[2].value || "\{\{"+keywords[2].ph+"\}\}"}} and 
+         {{keywords[3].value || "\{\{"+keywords[3].ph+"\}\}"}}.  So,
+         {{keywords[0].value || "\{\{"+keywords[0].ph+"\}\}"}} met with 
              {{(gender=='female')?'her':'his'}} life mentor 
-         {{keywords[4].value || "\{\{"+keywords[4].type+"\}\}"}} who told
+         {{keywords[4].value || "\{\{"+keywords[4].ph+"\}\}"}} who told
              {{(gender=='female')?'her':'him'}} to learn how to 
-         {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} with Thinkful.
+         {{keywords[5].value || "\{\{"+keywords[5].ph+"\}\}"}} with Thinkful.
          Thinkful didn't offer a course on 
-         {{keywords[5].value || "\{\{"+keywords[5].type+"\}\}"}} so
+         {{keywords[5].value || "\{\{"+keywords[5].ph+"\}\}"}} so
              {{(gender=='female')?'she':'he'}} studied programming instead.</p>
  
-         <p class="content">
+         <p class="content last">
           What a great decision! With
               {{(gender=='female')?'her':'his'}} new skills, 
-          {{keywords[0].value || "\{\{"+keywords[0].type+"\}\}"}} built a(n) 
-          {{keywords[6].value || "\{\{"+keywords[6].type+"\}\}"}} robot named
-          {{keywords[7].value || "\{\{"+keywords[7].type+"\}\}"}} that not only loved
-          {{keywords[3].value || "\{\{"+keywords[3].type+"\}\}"}} but did it
-          {{keywords[8].value || "\{\{"+keywords[8].type+"\}\}"}} times faster.</p>
+          {{keywords[0].value || "\{\{"+keywords[0].ph+"\}\}"}} built a(n) 
+          {{keywords[6].value || "\{\{"+keywords[6].ph+"\}\}"}} robot named
+          {{keywords[7].value || "\{\{"+keywords[7].ph+"\}\}"}} that not only loved
+          {{keywords[3].value || "\{\{"+keywords[3].ph+"\}\}"}} but did it
+          {{keywords[8].value || "\{\{"+keywords[8].ph+"\}\}"}} times faster.</p>
+
+        <button id="startOverBtn" type="button" ng-click="showKeywordsView()">Start Over</button>
     </section>
 </body>
 </html>
-
