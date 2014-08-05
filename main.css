@@ -60,6 +60,13 @@ header.container {
     border-top:2px solid black;
     margin:1em 0 2em 0;
 }
+.showError {
+    position:absolute;
+    margin:16px;
+    left:0;
+    bottom:0;
+    color:red;
+}
 #showTextBtn {
     position:absolute;
     margin:16px;

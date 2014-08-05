@@ -61,14 +61,17 @@ angular.module('ngMadLibsApp', [])
 })
 .controller('FormCtrl', function($scope) {
     $scope.submitted = false;
+    $scope.error = 'none';
     $scope.submit = function() {
         if($scope.keywordForm.$valid) {
             $scope.$emit('showText', true);
         } else {
             if ($scope.keywordForm.$error.required) {
+                $scope.error = 'required';
                 console.log('The Form is not completely filled in');
-            }
+            } 
             if ($scope.keywordForm.$error.number) {
+                $scope.error = 'number';
                 console.log('The Form element "Huge Number" is not a number');
                 $scope.keywords[8]['value'] = '';
             }

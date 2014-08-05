@@ -23,7 +23,6 @@
             <input
              ng-repeat="keyword in keywords"
              type={{keyword.type}}
-             name={{keyword.name}}
              placeholder={{keyword.ph}}
              ng-model="keyword.value"
              ng-class="{hasError: submitted && keywordForm.$invalid}"
@@ -33,6 +32,8 @@
                 <button id="genderToggleBtn" type="button" ng-click="toggleGender()">{{gender}}</button>
             </div>
             <div class="divider"></div>
+            <p class="showError" ng-if="submitted && error==='number'">Please enter number digits in all number keywords</p>
+            <p class="showError" ng-if="submitted && error==='required'">Please fill in all Mad Lib keywords</p>
             <button id="showTextBtn" type="submit">Generate My Mad Lib</button>
         </form>
     </section>
