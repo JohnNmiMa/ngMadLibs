@@ -1,5 +1,6 @@
-angular.module('ngMadLibsApp', [])
+angular.module('ngMadLibsApp', ['ngAnimate'])
 .controller('madLibsController', function($scope) {
+    $scope.shakeit = false;
     $scope.gender = 'female';
     $scope.keywords = [
         {ph: $scope.gender == 'female' ? 'Female Name' : 'Male Name',
@@ -45,9 +46,16 @@ angular.module('ngMadLibsApp', [])
         $scope.keywords[0].ph = ($scope.gender == 'female') ? 'Female Name' : 'Male Name';
     };
 
+    $scope.showKeywords = true;
     $scope.showText = false;
     $scope.$on('showText', function(event, data) {
-        $scope.showText = true;
+        $scope.shakeit = !$scope.shakeit;
+        $scope.showKeywords = false;
+        setTimeout(function() {
+            $scope.$apply(function () {
+                $scope.showText = true;
+            });
+        }, 400);
     });
     $scope.showKeywordsView = function() {
         var keyword;
@@ -56,7 +64,7 @@ angular.module('ngMadLibsApp', [])
         }
         $scope.$broadcast('resetForm', true);
         $scope.showText = false;
-        //$scope.submitted = false;
+        $scope.showKeywords = true;
     }
 })
 .controller('FormCtrl', function($scope) {
@@ -77,9 +85,116 @@ angular.module('ngMadLibsApp', [])
             }
         }
         $scope.submitted = true;
+        setTimeout(function() {
+            $scope.$apply(function () {
+                $scope.submitted = false;
+                $scope.error = 'none';
+            });
+        }, 5000);
     }
     $scope.$on('resetForm', function(event, data) {
         $scope.keywordForm.$setPristine();
         $scope.submitted = false;
     });
+})
+.animation('.showError-animation', function() {
+    return {
+        enter : function(element, done) {
+            element.css({"margin":"16px", "margin-left":"23px"});
+            element.animate({"margin-left":"16px"}, 50, "linear", done)
+            .animate({"margin-left":"23px"}, 50, "linear", done)
+            .animate({"margin-left":"16px"}, 50, "linear", done)
+            .animate({"margin-left":"23px"}, 50, "linear", done)
+            .animate({"margin-left":"16px"}, 50, "linear", done);
+
+            return function(cancelled) {
+                if(cancelled) {
+                    jQuery(element).stop();
+                }
+            }
+        },
+
+        leave : function(element, done) {
+            element.css({"opacity":"1.0"});
+            element.animate({"opacity":"0"}, 1000, "linear", done);
+
+            return function(cancelled) {
+                if(cancelled) {
+                    jQuery(element).stop();
+                }
+            }
+        }
+    };
+})
+.animation('.navSmiley-shaker', function() {
+    var doAnimation = function(element, className, done) {
+            console.log("beforeAddClass navSmiley-animation" + element);
+            var top = parseInt(jQuery(element).css('top'), 10),
+                left = parseInt(jQuery(element).css('left'), 10);
+            if(className == 'shakeit') {
+                element.css({"left":(left-40)+"px", "top":(top-20)+"px"});
+                element.animate({"left":(left+35)+"px", "top":(top+18)+"px"}, 60, "linear")
+                .animate({"left":(left-30)+"px", "top":(top-15)+"px"}, 50, "linear")
+                .animate({"left":(left+25)+"px", "top":(top+12)+"px"}, 40, "linear")
+                .animate({"left":(left-20)+"px", "top":(top-10)+"px"}, 35, "linear")
+                .animate({"left":(left+15)+"px", "top":(top+8)+"px"}, 30, "linear")
+                .animate({"left":(left-10)+"px", "top":(top-4)+"px"}, 30, "linear")
+                .animate({"left":(left+5)+"px", "top":(top+2)+"px"}, 30, "linear")
+                .animate({"left":left+"px", "top":top+"px"}, 30, "linear", done);
+            } else {
+                done();
+            }
+    };
+
+    return {
+        beforeAddClass : doAnimation,
+        beforeRemoveClass : doAnimation
+    }
+})
+.animation('.navLogo-shaker', function() {
+    var doAnimation = function(element, className, done) {
+            console.log("beforeAddClass navSmiley-animation" + element);
+            var top = parseInt(jQuery(element).css('top'), 10),
+                left = parseInt(jQuery(element).css('left'), 10);
+            if(className == 'shakeit') {
+                element.css({"left":(left-40)+"px", "top":(top+20)+"px"});
+                element.animate({"left":(left+35)+"px", "top":(top-18)+"px"}, 60, "linear")
+                .animate({"left":(left-30)+"px", "top":(top+15)+"px"}, 50, "linear")
+                .animate({"left":(left+25)+"px", "top":(top-12)+"px"}, 40, "linear")
+                .animate({"left":(left-20)+"px", "top":(top+10)+"px"}, 35, "linear")
+                .animate({"left":(left+15)+"px", "top":(top-8)+"px"}, 30, "linear")
+                .animate({"left":(left-10)+"px", "top":(top+4)+"px"}, 30, "linear")
+                .animate({"left":(left+5)+"px", "top":(top-2)+"px"}, 30, "linear")
+                .animate({"left":left+"px", "top":top+"px"}, 30, "linear", done);
+            } else {
+                done();
+            }
+    };
+
+    return {
+        beforeAddClass : doAnimation,
+        beforeRemoveClass : doAnimation
+    }
+})
+.animation('.madlibskeywords-shaker', function() {
+    return {
+        beforeAddClass : function(element, className, done) {
+            var top = parseInt(element.css('top'), 10),
+                left = parseInt(element.css('left'), 10);
+            if(className == 'ng-hide') {
+                element.css({"left":(left+40)+"px", "top":(top+20)+"px"});
+                element.animate({"left":(left-35)+"px", "top":(top-18)+"px"}, 60, "linear")
+                .animate({"left":(left+30)+"px", "top":(top+15)+"px"}, 50, "linear")
+                .animate({"left":(left-25)+"px", "top":(top-12)+"px"}, 40, "linear")
+                .animate({"left":(left+20)+"px", "top":(top+10)+"px"}, 35, "linear")
+                .animate({"left":(left-15)+"px", "top":(top-8)+"px"}, 30, "linear")
+                .animate({"left":(left+10)+"px", "top":(top+4)+"px"}, 30, "linear")
+                .animate({"left":(left-5)+"px", "top":(top-2)+"px"}, 30, "linear")
+                .animate({"left":left+"px", "top":top+"px"}, 30, "linear", done);
+            } else {
+                done();
+            }
+        }
+    }
 });
+

@@ -11,25 +11,46 @@ body {
 .container {
     position:relative;
     margin:0 30px;
-    border:2px solid black;
 }
 
 /* Header Layout */
 header.container {
     margin-top:30px;
-    border-bottom:none;
 }
 #navSmiley, #navLogo {
-    display:inline-block;
-    vertical-align: top;
     height:80px;
     text-align:center;
+    border:2px solid black;
 }
 #navSmiley {
+    position:absolute;
     width:25%;
-    border-right:2px solid black;
+    top:0;
+    left:0;
 }
+    /*.navSmiley-shaker.shakeit-add {
+        -webkit-animation-duration: 0.08s;
+                animation-duration: 0.08s;
+        -webkit-animation-iteration-count: 4;
+                animation-iteration-count: 4;
+        -webkit-animation-name: navSmily-shaker;
+                animation-name: navSmily-shaker;
+        -webkit-animation-direction: alternate;
+                animation-direction: alternate;
+    }
+    @-webkit-keyframes navSmily-shaker {
+        from { top: 10px; left:10px; }
+        to   { top: 0; left:0; }
+    }
+    @keyframes navSmily-shaker {
+        from { top: 10px; left:10px; }
+        to   { top: 0; left:0; }
+    }*/
+
 #navLogo {
+    position:absolute;
+    top:0;
+    right:0;
     width:75%;
 }
     img[src="img/ngMadLibsSmiley.png"], img[src="img/ngMadLibsLogo.png"] {
@@ -43,36 +64,89 @@ header.container {
     }
 
 /* MadLibs Keywords Layout */
-#madlibskeywords form {
-    padding:1em;
-    text-align:center;
-}
-#madlibskeywords form input {
-    border:1px inset;
-    border-radius:3px;
-    padding:3px;
-    margin:5px;
-}
-#madlibskeywords form input.hasError::-webkit-input-placeholder {
-   color: red;
-}
-.divider {
-    border-top:2px solid black;
-    margin:1em 0 2em 0;
-}
-.showError {
+#madlibskeywords, #madlibstext {
     position:absolute;
-    margin:16px;
-    left:0;
-    bottom:0;
-    color:red;
-}
-#showTextBtn {
-    position:absolute;
-    margin:16px;
+    top:108px;
     right:0;
-    bottom:0;
+    left:0;
+    border:2px solid black;
 }
+    /*.madlibskeywords-shaker.ng-hide-add {
+        -webkit-animation-duration: 0.08s;
+                animation-duration: 0.08s;
+        -webkit-animation-iteration-count: 4;
+                animation-iteration-count: 4;
+        -webkit-animation-name: madlibskeywords-shaker;
+                animation-name: madlibskeywords-shaker;
+        -webkit-animation-direction: alternate;
+                animation-direction: alternate;
+    }
+    @-webkit-keyframes madlibskeywords-shaker {
+        from { top: 112px; left:10px; }
+        to   { top: 108; left:0; }
+    }
+    @keyframes madlibskeywords-shaker {
+        from { top: 112px; left:10px; }
+        to   { top: 108; left:0; }
+    }*/
+    #madlibskeywords form {
+        padding:1em;
+        text-align:center;
+    }
+    #madlibskeywords form input {
+        border:1px inset;
+        border-radius:3px;
+        padding:3px;
+        margin:5px;
+    }
+        #madlibskeywords form input.hasError::-webkit-input-placeholder {
+           color: red;
+        }
+        #madlibskeywords form input.hasError::-moz-placeholder {
+           color: red;
+        }
+        #madlibskeywords form input::-webkit-inner-spin-button,
+        #madlibskeywords form input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        #madlibskeywords form input[type=number] {
+            -moz-appearance: none;
+            margin: 0;
+        }
+    .divider {
+        border-top:2px solid black;
+        margin:1em 0 2em 0;
+    }
+    .showError-animation {
+        position:absolute;
+        margin:16px;
+        left:0;
+        bottom:0;
+        color:red;
+    }
+        /*.showError.ng-enter {
+            -webkit-animation-duration: 0.1s;
+                    animation-duration: 0.1s;
+            -webkit-animation-iteration-count: 4;
+                    animation-iteration-count: 4;
+            -webkit-animation-name: shaker;
+                    animation-name: shaker;
+        }
+        @-webkit-keyframes shaker {
+            from { margin: 16px; margin-left:23px; }
+            to   { margin-left:16px; }
+        }
+        @keyframes shaker {
+            from { margin: 16px; margin-left:23px; }
+            to   { margin-left:16px; }
+        }*/
+    #showTextBtn {
+        position:absolute;
+        margin:16px;
+        right:0;
+        bottom:0;
+    }
 
 /* MadLibs Text Layout */
 #madlibstext .content {
