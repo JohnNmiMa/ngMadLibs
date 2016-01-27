@@ -62,6 +62,11 @@ header.container {
     img[src="img/ngMadLibsLogo.png"] {
         height:40%;
     }
+    #navLogo h1 {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 
 /* MadLibs Keywords Layout */
 #madlibskeywords, #madlibstext {
@@ -114,6 +119,9 @@ header.container {
             -moz-appearance: none;
             margin: 0;
         }
+    #madlibskeywords form .gender-toggle {
+        margin-top: 10px;
+    }
     .divider {
         border-top:2px solid black;
         margin:1em 0 2em 0;
